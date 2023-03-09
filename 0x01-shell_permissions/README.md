@@ -20,3 +20,4 @@ a script that adds execute permission to all subdirectories of the current direc
  a script that creates a directory called my_dir with permissions 751 in the working directory.
 a script that changes the group owner to school for the file hello
  a script that changes the owner to vincent and the group owner to staff for all the files and directories in the working directory.
+a script that changes the owner of the file hello to betty only if it is owned by the user guillaume.
