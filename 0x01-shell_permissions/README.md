@@ -16,3 +16,4 @@ The file hello will be in the working directory You are not allowed to use comma
 
 a script that sets the mode of the file hello to this:
 a script that sets the mode of the file hello the same as olleh’s mode.
+a script that adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users.
