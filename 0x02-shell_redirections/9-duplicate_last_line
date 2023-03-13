@@ -1,2 +1,2 @@
 #!/bin/bash
-grep iacta | tail -1
+tail -1 iacta>>iacta
