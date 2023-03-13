@@ -1,2 +1,2 @@
 #!/bin/bash
-grep /etc/passwd | head -3
+grep "root" /etc/passwd | head -3 
