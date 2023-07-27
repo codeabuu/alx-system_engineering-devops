@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#using a for lopp to display 10 times
+name="Best School"
+for ((i = 1; i < 11; i++))
+do
+	echo "$name"
+done 
