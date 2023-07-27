@@ -2,7 +2,7 @@
 #add statements in btn
 name="Best School"
 i=1
-while [ $i -le 10]
+while [ $i -le 10 ]
 do
 	echo "$name"
 	if [ $i -eq 9 ]
