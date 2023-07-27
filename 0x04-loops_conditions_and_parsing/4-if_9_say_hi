@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#add statements in btn
+name="Best School"
+i=1
+while [ $i -le 10]
+do
+	echo "$name"
+	if [ $i -eq 9 ]
+	then
+		echo "Hi"
+	fi
+	((i++))
+done
