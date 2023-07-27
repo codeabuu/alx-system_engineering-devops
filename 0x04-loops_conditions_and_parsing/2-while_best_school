@@ -2,7 +2,7 @@
 
 name="Best School"
 counter=1
-while [ $counter -lt 11 ]
+while [ $counter -le 10 ]
 do
 	echo "$name"
 	((counter++))
