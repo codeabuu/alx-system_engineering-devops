@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#display content of current directory
-content=$(ls -l)
+# Displays content of the current directory in a list format Where only the part of the name after the first dash is displayed
+content=$(ls -1)
 for file in $content
 do
 	echo "${file#*-}"
