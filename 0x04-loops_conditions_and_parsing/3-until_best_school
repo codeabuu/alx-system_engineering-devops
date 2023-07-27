@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#using until to print 10 times
+name="Best School"
+i=0
+until [ $i -ge 10 ]
+do
+	echo "$name"
+	((i++))
+done
