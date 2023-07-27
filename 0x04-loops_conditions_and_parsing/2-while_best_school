@@ -2,7 +2,7 @@
 #Bash script that print Best school 10 times using the while loop
 name="Best School"
 counter=1
-while [ $counter -le 10 ]
+while [ $counter -lt 11 ]
 do
 	echo "$name"
 	((counter++))
