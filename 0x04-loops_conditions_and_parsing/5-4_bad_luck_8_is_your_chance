@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#4 bad luck, 8 is your chance
+name="Best School"
+i=1
+while [ $i -le 10 ]
+do
+	if [ $i -eq 4 ]
+	then
+		echo "bad luck"
+	elif [ $i -eq 8 ]
+	then
+		echo "good luck"
+	else
+		echo "$name"
+	fi
+	((i++))
+done
