@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#display bash word
+
+ps auxf | grep bash
