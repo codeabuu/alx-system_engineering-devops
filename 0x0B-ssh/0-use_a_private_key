@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-server='100.24.205.226'
-privat_key='~/.ssh/school'
+ssh ubuntu@100.24.205.226 -i ~/.ssh/school
