@@ -5,9 +5,8 @@ if [ "$#" -ne 4 ]; then
         exit 1
 fi
 
-file_path="$1"
-server_ip="$2"
-username="$3"
-ssh_key="$4"
-
-scp -o StrictHostKeyChecking=no -i "$ssh_key" "$file_path" "$username@$server_ip:~/"
+if [ "$#" -lt 4 ]; then
+	scp -o StrictHostKeyChecking=no "$1" "$3@$2":~/
+else
+	scp -i "$4" -o StrictHostKeyChecking=no "$1" "$3@$2":~/
+fi
