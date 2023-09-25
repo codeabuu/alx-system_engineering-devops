@@ -1,11 +1,30 @@
 #!/usr/bin/env bash
-#redirection
+# Installs nginx server
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
 
-sudo apt-get update
-sudo apt-get install -y nginx
+# Create a new Nginx configuration for the redirection
+echo "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-echo "Hello World!" | sudo tee /var/www/html/index.html
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.blog.ehoneahobed.com permanent;"
-sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+    location /redirect_me {
+        return 301 http://example.com; # Replace with the actual URL
+    }
 
-sudo service nginx restart
+    # Additional server configuration can be added here if needed
+}" > /etc/nginx/sites-available/redirect
+
+# Create a symbolic link to enable the configuration
+ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
+
+# Test the Nginx configuration for syntax errors
+if nginx -t; then
+    # Reload Nginx to apply the new configuration
+    service nginx reload
+    echo "Nginx configuration reloaded successfully."
+else
+    echo "Nginx configuration test failed. Check your configuration."
+fi
