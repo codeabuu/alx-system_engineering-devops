@@ -1,29 +1,25 @@
 #!/usr/bin/env bash
-# Installs nginx server
-apt-get update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
+# Script that configures a new Ubuntu machine to respect above requirements
 
-# Create a new Nginx configuration for the redirection
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+# Install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
-    location /redirect_me {
-        return 301 http://example.com; # Replace with the actual URL
-    }
+# Create the "Hello World!" HTML file
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-    # Additional server configuration can be added here if needed
-}" > /etc/nginx/sites-available/redirect
+# Create a new Nginx configuration block for the redirection
+redirection_config="location /redirect_me {
+    return 301 http://example.com; # Replace with the actual URL
+}"
 
-# Create a symbolic link to enable the configuration
-ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
+# Add the redirection configuration to the default Nginx configuration
+sudo sed -i "/server_name _;/a $redirection_config" /etc/nginx/sites-available/default
 
 # Test the Nginx configuration for syntax errors
-if nginx -t; then
+if sudo nginx -t; then
     # Reload Nginx to apply the new configuration
-    service nginx reload
+    sudo service nginx reload
     echo "Nginx configuration reloaded successfully."
 else
     echo "Nginx configuration test failed. Check your configuration."
