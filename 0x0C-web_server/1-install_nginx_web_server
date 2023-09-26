@@ -3,5 +3,6 @@
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
+chmod 777 -R /var/www/html/
 echo "Hello World!" > /var/www/html/index.html
 service nginx start
