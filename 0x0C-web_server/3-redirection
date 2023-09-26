@@ -1,26 +1,11 @@
 #!/usr/bin/env bash
 # Script that configures a new Ubuntu machine to respect above requirements
 
-# Install Nginx
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# Create the "Hello World!" HTML file
 echo "Hello World!" | sudo tee /var/www/html/index.html
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.abdul.com permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-# Create a new Nginx configuration block for the redirection
-redirection_config="location /redirect_me {
-    return 301 http://example.com; # Replace with the actual URL
-}"
-
-# Add the redirection configuration to the default Nginx configuration
-sudo sed -i "/server_name _;/a $redirection_config" /etc/nginx/sites-available/default
-
-# Test the Nginx configuration for syntax errors
-if sudo nginx -t; then
-    # Reload Nginx to apply the new configuration
-    sudo service nginx reload
-    echo "Nginx configuration reloaded successfully."
-else
-    echo "Nginx configuration test failed. Check your configuration."
-fi
+sudo service nginx restart
