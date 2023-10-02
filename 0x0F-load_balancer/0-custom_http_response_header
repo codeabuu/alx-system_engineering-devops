@@ -20,7 +20,7 @@ echo 'Hello World!' |sudo tee  /var/www/html/index.html
 echo "Ceci n'est pas une page" |sudo tee /var/www/html/404.html
 
 # code to configure redirect for a single page(/redirect_me) and add header to display hostname
-string_for_replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.abdul.com permanent;"
+string_for_replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.nerdsquad.tech permanent;"
 sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # code to configure redirect for 404 error page
