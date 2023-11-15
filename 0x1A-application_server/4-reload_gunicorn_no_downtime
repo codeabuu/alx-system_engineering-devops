@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+#reload gunicon script
 
 pgrep gunicorn | xargs kill -HUP
