@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-
 # Send SIGHUP signal to Gunicorn master process
+
 pgrep gunicorn | xargs kill -HUP
