@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-#reload gunicon script
 
-pgrep gunicorn | xargs kill -HUP
+# Send SIGHUP signal to Gunicorn master process
+kill -HUP $(pgrep gunicorn)
+
+echo "Graceful reload initiated."
